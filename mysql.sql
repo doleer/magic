@@ -1,3 +1,9 @@
+--开启数据库
+~:net start mysql
+
+--关闭数据库
+~:net stop mysql
+
 --登录数据库
 ~:mysql -u root -p 100200300;
 
@@ -7,11 +13,14 @@ mysql> show databases;
 --切换数据库
 mysql> use databaseName;
 
+--在数据库服务器中创建数据库
+mysql> create database databaseName;
+
+--删除数据库
+mysql> drop database databaseName;
+
 --退出数据库
 mysql> exit;
-
---在数据库服务器中创建新的数据库
-mysql> create database databaseName;
 
 --查看数据库中所有数据表
 mysql> show tables;
@@ -49,6 +58,8 @@ mysql> describe student;
 mysql> INSERT INTO student
      ->VALUES(1,'lucy','female',18,'1995-7-18','2019-11-26');
      ->VALUES(2,'范冰冰','female',36,'1984-7-18','2019-11-26');
+     ->VALUES(3,'lucia','female',28,'1982-3-16','2019-11-27');
+     ->VALUES(4,'Lily','female',16,'1986-4-15','2019-11-27');
 
 --查询插入的数据
 mysql> select * from student;
@@ -98,5 +109,27 @@ MEDIUMTEXT	0-16 777 215字节		中等长度文本数据
 LONGBLOB	0-4 294 967 295字节	二进制形式的极大文本数据
 LONGTEXT	0-4 294 967 295字节	极大文本数据
 
+--删除数据表中的数据
+mysql> delete from student where name="范冰冰";
++------+-------+------+------+------------+------------+
+| id   | name  | sex  | age  | birthday   | register   |
++------+-------+------+------+------------+------------+
+| 1    | lucia | f    |   18 | 1998-11-22 | 2019-11-27 |
++------+-------+------+------+------------+------------+
 
+--修改数据表中的数据
+mysql> update student set sex="female" where name="lucia";
+       update student set name="lucy" where age="28";
 
+--修改表字段长度
+mysql> alter table student modify column sex CHAR(10);
+
+--总结
+	--增
+	INSERT
+	--删
+	DELETE
+	--改
+	UPDATE
+	--查
+	SELECT
