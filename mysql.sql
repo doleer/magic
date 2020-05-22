@@ -123,6 +123,8 @@ mysql> update student set sex="female" where name="lucia";
 
 --修改表字段长度
 mysql> alter table student modify column sex CHAR(10);
+       alter table my_user modify column id INT primary key auto_increment first;
+
 
 --总结
 	--增
